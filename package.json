@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-static": "^1.2.6",
+    "mysql": "^2.18.1"
+  }
+}
