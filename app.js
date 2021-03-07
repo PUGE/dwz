@@ -20,8 +20,9 @@ const app = express();
 
 app.get('/creat', (req, res) => {
   const data = req.query.data
+  const customID = req.query.id
   let md5 = crypto.createHash('md5').update(data).digest("hex")
-  let md5Shot = md5.slice(0 , 16)
+  let md5Shot = customID ? customID : md5.slice(0 , 16)
   console.log(`INSERT new URL: ${data}`)
   // connection.connect()
   connection.query('INSERT INTO `url` (shot, url) VALUES (? , ?)', [md5Shot, data], function (error, results, fields) {

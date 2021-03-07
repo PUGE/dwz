@@ -29,6 +29,7 @@
     html, body {
       width: 100%;
       height: 100%;
+      background-color: #fff2f2;
     }
     .box {
       position: absolute;
@@ -60,8 +61,8 @@
       background: #009fe9;
       color: white;
       border-radius: 10px;
-      width: 100%;
-      margin: 0 auto;
+      width: 33%;
+      margin-left: 2%;
       cursor: pointer;
     }
     .info {
@@ -70,6 +71,19 @@
       font-size: 20px;
       height: 45px;
     }
+    .bottom-list {
+      display: flex;
+    }
+    #custom {
+      padding: 0 2%;
+      font-size: 19px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      height: 45px;
+      width: 61%;
+    }
   </style>
 </head>
 
@@ -77,11 +91,16 @@
   <div class="box">
     <div class="info"></div>
     <input type="text" id="urlInput" placeholder="请输入您需要缩短的链接">
-    <input class="click-button" type="button" value="生成" onclick="run()">
+    <div class="bottom-list">
+      <input type="text" id="custom" placeholder="自定义ID">
+      <input class="click-button" type="button" value="生成" onclick="run()">
+    </div>
+    
   </div>
   <script>
     function run () {
       var urlInput = document.querySelector('#urlInput').value
+      var customID = document.querySelector('#custom').value
       if (!urlInput) return
       var requestOptions = {
         method: 'GET',
@@ -89,7 +108,7 @@
         redirect: 'follow'
       };
 
-      fetch(`http://127.0.0.1:8000/creat?data=${encodeURI(urlInput)}`, requestOptions)
+      fetch(`http://127.0.0.1:8000/creat?data=${encodeURIComponent(urlInput)}${customID ? '&id=' + customID : ''}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           if (result.err == 0) {
