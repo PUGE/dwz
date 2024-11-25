@@ -3,10 +3,10 @@ const crypto = require('crypto');
 const express = require("express");
 // const exStatic = require("express-static");
 const DbConfig = {
-  host     : 'bj-cynosdbmysql-grp-kqvvbnw0.sql.tencentcdb.com',
-  port     : 28556,
-  user     : 'test',
-  password : 'test',
+  host     : 'db.port.run',
+  port     : 3306,
+  user     : 'dwz',
+  password : 'dwz',
   database : 'dwz'
 }
 
